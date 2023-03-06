@@ -1,8 +1,11 @@
-import ComponentExec
+for i in range(7):
 
-exec = ComponentExec.ComponentExec()
+    nExec = i +23
+    import ComponentExec
 
-exec.exec()
+    exec = ComponentExec.ComponentExec()
+
+    exec.exec(nExec)
 
 '''
 #try:

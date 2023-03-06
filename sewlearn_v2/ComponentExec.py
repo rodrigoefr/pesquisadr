@@ -11,9 +11,10 @@ class ComponentExec:
     def __init__(self):
         self.generator = Generator.Generator()
 
-    def exec(self):
+    def exec(self, nExec):
         dh1 = datetime.today()
         print ('início:',dh1)
+        self.nExec = nExec
         self.genDMs()
         self.uploadStudents()
         self.configQLearning()
@@ -68,7 +69,7 @@ class ComponentExec:
         # Escolher o arquivo indicado pela análise do artigo
         # --- Gerar Conjunto de Estudantes ---
         #dfX = pd.read_csv("sewlearn_v2/data/kmeans_4_clusters_normalizado.csv")
-        dfX = pd.read_csv("data/kmeans_4_clusters_normalizado.csv")
+        dfX = pd.read_csv("data/kmeans_4_clusters_normalizado06.csv")
         vetorEstudantesInput = dfX.values
 
         listStudents = []
@@ -243,7 +244,7 @@ class ComponentExec:
     def salvarTexto(self, texto, tipo):
         #if tipo==1: #log
         if (tipo==2): #resultado
-            arquivo = open('trace/result10.txt','a')
+            arquivo = open('trace/result2semClus_'+ str(self.nExec)+'.txt','a')
             texto = texto + '\n'
             arquivo.write(texto)
             arquivo.close()

@@ -3,22 +3,12 @@ dfX = pd.read_csv("data/kmeans_4_clusters.csv")
 vetorEstudantesInput = dfX.values
 df = dfX
 
-softwareUnderstanding = []
-understandingConcepts = []
-practiceSM = []
-testSM = []
+df['softwareUnderstanding'] = df['softwareUnderstanding'] * 0.0006
+df['understandingConcepts'] = df['understandingConcepts'] * 0.0006
+df['practiceSM'] = df['practiceSM'] * 0.0006
+df['testSM'] = df['testSM'] * 0.0006
 
-for x in vetorEstudantesInput:
-    id = x[0]
-    softwareUnderstanding.append(x[1] * 0.06)
-    understandingConcepts.append(x[2] * 0.06)
-    practiceSM.append(x[3] * 0.06)
-    testSM.append(x[4] * 0.06)
-    print (id)
+df.drop(["Unnamed: 0"], axis=1, inplace=True)
+print (df.head())
 
-df['softwareUnderstanding'] = softwareUnderstanding
-df['understandingConcepts'] = understandingConcepts
-df['practiceSM'] = practiceSM
-df['testSM'] = testSM
-
-df.to_csv('data/saida.csv')
+df.to_csv('data/kmeans_4_clusters_normalizado0001p.csv')
